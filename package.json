@@ -1,0 +1,27 @@
+{
+  "name": "nexhire",
+  "version": "1.0.0",
+  "description": "NexHire — Internship & Placement Management System",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"blue,magenta\" \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "prisma:generate": "node server/node_modules/prisma/build/index.js generate --schema=./prisma/schema.prisma",
+    "prisma:migrate": "node server/node_modules/prisma/build/index.js migrate dev --schema=./prisma/schema.prisma",
+    "prisma:seed": "node server/node_modules/tsx/dist/cli.mjs server/src/scripts/seed.ts",
+    "prisma:push": "node server/node_modules/prisma/build/index.js db push --schema=./prisma/schema.prisma",
+    "test:db": "npm --prefix server run test:db",
+    "test:auth": "node server/node_modules/tsx/dist/cli.mjs server/src/scripts/testAuth.ts",
+    "test:student": "node server/node_modules/tsx/dist/cli.mjs server/src/scripts/testStudentModule.ts",
+    "test:recruitment": "node server/node_modules/tsx/dist/cli.mjs server/src/scripts/testRecruitmentModule.ts",
+    "verify:db": "node server/node_modules/tsx/dist/cli.mjs server/src/scripts/verifyDb.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  }
+}

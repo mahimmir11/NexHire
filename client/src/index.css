@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nexhire-primary: #2E9D74;
+  --color-nexhire-secondary: #61B795;
+  --color-nexhire-light: #A7D6C0;
+  --color-nexhire-bg: #EAF6F0;
+  --color-nexhire-dark: #143026;
+  --color-nexhire-darker: #0d211a;
+  --color-nexhire-surface: #FFFFFF;
+  --color-nexhire-muted: #527566;
+  --color-nexhire-border: #C8E5D7;
+}
+
+:root {
+  --nexhire-primary: #2E9D74;
+  --nexhire-secondary: #61B795;
+  --nexhire-light: #A7D6C0;
+  --nexhire-bg: #EAF6F0;
+  --nexhire-dark: #143026;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--nexhire-bg);
+  color: #143026;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+code, pre, kbd {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Glassmorphism Styles */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(167, 214, 192, 0.45);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(167, 214, 192, 0.55);
+}
+
+.glass-card-subtle {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(167, 214, 192, 0.4);
+}
+
+.glass-pill {
+  background: rgba(46, 157, 116, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(46, 157, 116, 0.25);
+}
+
+/* Custom Gradient Utilities */
+.nexhire-gradient-primary {
+  background: linear-gradient(135deg, #2E9D74 0%, #61B795 100%);
+}
+
+.nexhire-gradient-hero {
+  background: radial-gradient(circle at 50% 0%, rgba(167, 214, 192, 0.35) 0%, rgba(234, 246, 240, 0) 70%);
+}
+
+.nexhire-gradient-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5FAF7 100%);
+}
+
+.nexhire-text-gradient {
+  background: linear-gradient(135deg, #143026 0%, #2E9D74 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Shadows */
+.shadow-nexhire-sm {
+  box-shadow: 0 2px 8px -1px rgba(46, 157, 116, 0.12), 0 1px 3px -1px rgba(46, 157, 116, 0.08);
+}
+
+.shadow-nexhire-md {
+  box-shadow: 0 10px 25px -5px rgba(46, 157, 116, 0.15), 0 8px 10px -6px rgba(46, 157, 116, 0.08);
+}
+
+.shadow-nexhire-lg {
+  box-shadow: 0 20px 40px -10px rgba(46, 157, 116, 0.2), 0 12px 16px -8px rgba(46, 157, 116, 0.1);
+}
+
+.shadow-nexhire-glow {
+  box-shadow: 0 0 35px 2px rgba(97, 183, 149, 0.35);
+}
+
+/* Animations */
+@keyframes nexhireFloatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes nexhireFloatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes nexhirePulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes nexhireFlowPath {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-nexhire-float {
+  animation: nexhireFloatSlow 6s ease-in-out infinite;
+}
+
+.animate-nexhire-float-delayed {
+  animation: nexhireFloatReverse 7s ease-in-out infinite 1s;
+}
+
+.animate-nexhire-pulse-glow {
+  animation: nexhirePulseGlow 4s ease-in-out infinite;
+}
+
+.animate-nexhire-flow {
+  stroke-dasharray: 8 6;
+  animation: nexhireFlowPath 2.5s linear infinite;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-nexhire-float,
+  .animate-nexhire-float-delayed,
+  .animate-nexhire-pulse-glow,
+  .animate-nexhire-flow,
+  .animate-bounce,
+  .animate-spin,
+  .animate-pulse {
+    animation: none !important;
+    transition: none !important;
+  }
+}
